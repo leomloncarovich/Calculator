@@ -107,11 +107,11 @@ const Calculator = () => {
         <div className={`w-full min-h-14 border border-black border-solid mb-2.5 text-right py-4 pr-1 text-sm overflow-auto ${isOn ? 'bg-green-500/10' : 'bg-black/50'}`}>{isOn ? completeOperation : ''}</div>
         <div className={`w-full h-14 border border-black border-solid mb-2.5 text-right py-4 pr-1 ${isOn ? 'bg-green-500/10' : 'bg-black/50'}`}>{isOn ? currentValue : 'OFF'}</div>
         <div className="grid grid-cols-4 gap-2.5">
-          <button className='bg-red-500 text-white font-bold px-4 rounded' onClick={handleClear} disabled={!isOn}>AC</button>
-          <button className='bg-yellow-500 text-white font-black align-middle rounded' onClick={handleBackspace} disabled={!isOn}>C</button>
-          <button className='bg-green-500 col-span-2 text-white font-bold px-4 rounded' onClick={handleCalculate} disabled={!isOn}>=</button>        
+        <button className={`py-2 text-white font-bold rounded col-span-2 ${isOn ? 'bg-green-500' : 'bg-red-500'}`} onClick={togglePower}>On/Off</button>
+          <button className='bg-red-500 text-white text-base font-bold px-4 rounded' onClick={handleClear} disabled={!isOn}>AC</button>
+          <button className='bg-yellow-500 text-base text-white font-black align-middle rounded' onClick={handleBackspace} disabled={!isOn}>C</button>       
           {operations.map((operation) => (
-            <button className='text-base bg-blue-500 text-white font-bold py-2 px-4 rounded' key={operation} onClick={() => handleOperation(operation)} disabled={!isOn}>
+            <button className='text-base bg-slate-500 text-white font-bold py-2 px-4 rounded' key={operation} onClick={() => handleOperation(operation)} disabled={!isOn}>
               {operation}
             </button>
           ))}
@@ -120,7 +120,7 @@ const Calculator = () => {
               {num}
             </button>
           ))}
-          <button className={`py-2 text-white font-bold rounded ${isOn ? 'bg-green-500' : 'bg-red-500'}`} onClick={togglePower}>On/Off</button>
+          <button className='bg-green-500 text-base text-white font-bold px-4 rounded' onClick={handleCalculate} disabled={!isOn}>=</button> 
         </div>
       </div>
     </main>
